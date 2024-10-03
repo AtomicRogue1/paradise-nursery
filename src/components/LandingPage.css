@@ -1,0 +1,49 @@
+body {
+    margin: 0 0;
+    justify-self: center;
+    /* Center vertically if needed */
+    align-self: center;
+    /* Center horizontally if needed */
+    height: 100vh;
+}
+
+.landing-page {
+    text-align: center;
+    padding: 100px 0;
+    color: white;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+}
+
+.landing-background {}
+
+.flexContainer {
+    align-self: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.flexItem {
+    align-self: center;
+    flex: 1;
+}
+
+.company-name {
+    font-size: 3rem;
+}
+
+.company-description {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.get-started-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
