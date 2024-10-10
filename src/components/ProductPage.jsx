@@ -1,40 +1,32 @@
-import React from 'react';
-import './ProductPage.css'; // Optional styling
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/reducers/cartActions';
 
-const plants = [
-  { category: 'Succulents', name: 'Aloe Vera', price: '$12.99', image: '/assets/aloe.jpg' },
-  { category: 'Succulents', name: 'Echeveria', price: '$9.99', image: '/assets/echeveria.jpg' },
-  { category: 'Ferns', name: 'Boston Fern', price: '$15.99', image: '/assets/boston_fern.jpg' },
-  { category: 'Ferns', name: 'Maidenhair Fern', price: '$14.99', image: '/assets/maidenhair_fern.jpg' },
-  { category: 'Cacti', name: 'Golden Barrel Cactus', price: '$18.99', image: '/assets/golden_barrel.jpg' },
-  { category: 'Cacti', name: 'Prickly Pear', price: '$20.99', image: '/assets/prickly_pear.jpg' },
+const products = [
+  { id: 1, name: 'Aloe Vera', description: 'Medicinal plant', price: 10, image: '/images/aloe.jpg' },
+  { id: 2, name: 'Lavender', description: 'Aromatic plant', price: 12, image: '/images/lavender.jpg' },
+  // Add more plants as needed
 ];
 
-const ProductPage = () => {
-  const categories = ['Succulents', 'Ferns', 'Cacti'];
+function ProductsPage() {
+  const dispatch = useDispatch();
 
   return (
-    <div className="product-page">
-      <h1>Our Houseplants</h1>
-      {categories.map(category => (
-        <div key={category}>
-          <h2>{category}</h2>
-          <div className="plant-category">
-            {plants
-              .filter(plant => plant.category === category)
-              .map(plant => (
-                <div key={plant.name} className="plant-item">
-                  <img src={plant.image} alt={plant.name} className="plant-thumbnail" />
-                  <h3>{plant.name}</h3>
-                  <p>{plant.price}</p>
-                  <button className="add-to-cart-button">Add to Cart</button>
-                </div>
-              ))}
+    <div>
+      <h1>Our Plants</h1>
+      <div className="product-list">
+        {products.map((plant) => (
+          <div className="plant-card" key={plant.id}>
+            <img src={plant.image} alt={plant.name} />
+            <h2>{plant.name}</h2>
+            <p>{plant.description}</p>
+            <p>${plant.price}</p>
+            <button onClick={() => dispatch(addToCart(plant))}>Add to Cart</button>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
 
-export default ProductPage;
+export default ProductsPage;

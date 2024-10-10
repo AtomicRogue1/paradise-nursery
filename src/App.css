@@ -1,0 +1,15 @@
+button
+{
+    font-size: 15px;
+    padding: 10px;
+    background-color: #248012;
+    color: white;
+    text-decoration: none;
+    color: inherit;
+}
+
+.link
+{
+    text-decoration: none;
+    color: inherit;
+}
