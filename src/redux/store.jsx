@@ -8,6 +8,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productReducer from "./productSlice.jsx"
 
-export const store = configureStore({
+const store = configureStore({
     reducer: productReducer,
 })
+
+export default store;

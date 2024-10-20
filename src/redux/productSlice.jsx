@@ -1,12 +1,8 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = {
-    products: [
-        { id: nanoid(), name: 'Monstera', price: 25, image: '/images/monstera.png' },
-        { id: nanoid(), name: 'Fiddle Leaf Fig', price: 40, image: '/images/fig.png' },
-        { id: nanoid(), name: 'Snake Plant', price: 15, image: '/images/snakeplant.png' },
-      ],
-}
+    products: [],
+};
 
 export const productSlice = createSlice({
     name: 'product',
@@ -15,25 +11,26 @@ export const productSlice = createSlice({
         addProduct: (state, action) => {
             const product = {
                 id: nanoid(),
-                name : action.payload.name ,
-                price : action.payload.price,
-                image : action.payload.image
-            }
-            state.products.push(product)
+                name: action.payload.name,
+                category: action.payload.category,
+                price: action.payload.price,
+                image: action.payload.image,
+                quantity: action.payload.quantity || 1  // Set default quantity if not provided
+            };
+            state.products.push(product);
         },
         removeProduct: (state, action) => {
-            state.products = state.products.filter((product) => product.id !== action.payload.id)
+            state.products = state.products.filter((product) => product.id !== action.payload.id);
         },
         updateQuantity: (state, action) => {
-            state.products = state.products.map(item => 
-                item.id === action.payload.id 
-                ? { ...item, quantity: action.payload.quantity } 
-                : item
-            )
+            state.products = state.products.map(item =>
+                item.id === action.payload.id
+                    ? { ...item, quantity: action.payload.quantity }
+                    : item
+            );
         },
-    }
-})
+    },
+});
 
-export const { addProduct, removeProduct, updateQuantity } = productSlice.actions
-
-export default productSlice.reducer
+export const { addProduct, removeProduct, updateQuantity } = productSlice.actions;
+export default productSlice.reducer;
