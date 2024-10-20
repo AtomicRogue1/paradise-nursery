@@ -1,0 +1,17 @@
+.cart-item
+{
+    display: grid;
+    border-color: white;
+    grid-template-columns: 2;
+};
+
+.item1
+{
+    grid: 1;
+    grid-row: 1 / 4;
+};
+
+.item2
+{
+    grid: 1;
+}

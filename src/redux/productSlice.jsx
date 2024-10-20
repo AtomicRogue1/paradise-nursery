@@ -9,15 +9,21 @@ export const productSlice = createSlice({
     initialState,
     reducers: {
         addProduct: (state, action) => {
-            const product = {
-                id: nanoid(),
-                name: action.payload.name,
-                category: action.payload.category,
-                price: action.payload.price,
-                image: action.payload.image,
-                quantity: action.payload.quantity || 1  // Set default quantity if not provided
-            };
-            state.products.push(product);
+            const existingProduct = state.products.find(product => product.id === action.payload.id);
+
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                const product = {
+                    id: action.payload.id || nanoid(),
+                    name: action.payload.name,
+                    category: action.payload.category,
+                    price: action.payload.price,
+                    image: action.payload.image,
+                    quantity: 1
+                };
+                state.products.push(product);
+            }
         },
         removeProduct: (state, action) => {
             state.products = state.products.filter((product) => product.id !== action.payload.id);

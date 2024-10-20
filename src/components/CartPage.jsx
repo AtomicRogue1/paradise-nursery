@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeProduct, updateQuantity } from '../redux/productSlice';
+import './CartPage.css'
 
 function CartPage() {
   const cart = useSelector((state) => state.products);
@@ -13,17 +14,21 @@ function CartPage() {
         <div>
           {cart.map((item) => (
             <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.name} />
-              <p>{item.name}</p>
-              <p>${item.price}</p>
+              <div className='item1'>
+              <h3>{item.name}</h3>
+              <h5>${item.price}</h5>
+              </div>
+              <div className='item2'>
               <p>Quantity: {item.quantity}</p>
               <button onClick={() => dispatch(updateQuantity(item.id, item.quantity + 1))}>+</button>
               <button onClick={() => dispatch(updateQuantity(item.id, item.quantity - 1))}>-</button>
               <button onClick={() => dispatch(removeProduct(item.id))}>Remove</button>
+              </div>
             </div>
           ))}
         </div>
       )}
+      <button style={{marginTop:'100px'}} onClick={()=>alert("Coming Soon!")}>Checkout</button>
     </div>
   );
 }
