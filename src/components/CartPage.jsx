@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, updateQuantity } from '../redux/reducers/cartActions';
+import { removeProduct, updateQuantity } from '../redux/productSlice';
 
 function CartPage() {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   return (
@@ -19,7 +19,7 @@ function CartPage() {
               <p>Quantity: {item.quantity}</p>
               <button onClick={() => dispatch(updateQuantity(item.id, item.quantity + 1))}>+</button>
               <button onClick={() => dispatch(updateQuantity(item.id, item.quantity - 1))}>-</button>
-              <button onClick={() => dispatch(removeFromCart(item.id))}>Remove</button>
+              <button onClick={() => dispatch(removeProduct(item.id))}>Remove</button>
             </div>
           ))}
         </div>

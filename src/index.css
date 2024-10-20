@@ -15,9 +15,9 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Cutchogue_-_Oregon_Road_-_Plant_Nursery.jpg/1024px-Cutchogue_-_Oregon_Road_-_Plant_Nursery.jpg');
-  background-size: cover;
+  background-size: auto;
   background-position: center;
-  background-repeat: repeat-y;
+  background-repeat: repeat;
   filter: brightness(0.25);
   z-index: -1;
 }
